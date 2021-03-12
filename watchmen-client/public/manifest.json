@@ -1,0 +1,21 @@
+{
+  "name" : "Watchmen",
+  "description" : "Tracks product prices",
+  "version" : "1.0",
+  "manifest_version" : 3,
+  "permissions" : [
+    "activeTab",
+    "tabs"
+  ],
+  "action" : {
+    "default_title": "Watchmen",
+    "default_popup" : "popup.html"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [{
+    "matches": ["http://*/*"],
+    "js": ["content.js"]
+  }]
+}
