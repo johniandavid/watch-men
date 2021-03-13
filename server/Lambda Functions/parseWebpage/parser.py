@@ -12,6 +12,9 @@ def _parse_name(parsed_url,soup):
     elif parsed_url.hostname == "www.urbanoutfitters.com":
         print("This is from Urban Outfitters")
         return soup.find(class_="c-pwa-product-meta-heading").string.strip() if soup.find(class_="c-pwa-product-meta-heading") != None else ""
+    elif parsed_url.hostname == "www.nike.com":
+        print("This is Nike")
+        return soup.find(id="pdp_product_title").string if soup.find(id="pdp_product_title") != None else ""
 
 def _parse_price(parsed_url, soup):
 
@@ -24,7 +27,10 @@ def _parse_price(parsed_url, soup):
         print("This is from Ulta")
     elif parsed_url.hostname == "www.urbanoutfitters.com":
         print("This is from Urban Outfitters")
-        return float(soup.find(class_="c-pwa-product-price__current").string[1:])
+        return Decimal(soup.find(class_="c-pwa-product-price__current").string[1:])
+    elif parsed_url.hostname == "www.nike.com":
+        print("This is Nike")
+        return Decimal(soup.find(class_="product-price").string[1:]) if soup.find(class_="product-price") != None else ""
 
 def _parse_image(parsed_url, soup):
 
@@ -38,4 +44,6 @@ def _parse_image(parsed_url, soup):
     elif parsed_url.hostname == "www.urbanoutfitters.com":
         print("This is from Urban Outfitters")
         return soup.find(class_="c-pwa-image-viewer__img js-pwa-faceout-image")["src"] if soup.find(class_="c-pwa-image-viewer__img js-pwa-faceout-image")["src"] != None else ""
-
+    elif parsed_url.hostname == "www.nike.com":
+        print("This is Nike")
+        return soup.find(id="pdp_6up-hero")["src"] if soup.find(id="pdp_6up-hero")["src"] != None else ""

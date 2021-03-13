@@ -40,3 +40,12 @@ def lambda_handler(event, context):
             'last_modified': f"{datetime.datetime.now()}"
         }
         return product
+
+
+if __name__ == "__main__":
+
+    event = {
+        "url" : "https://www.nike.com/t/react-infinity-run-flyknit-mens-running-shoe-QbwPss/CD4371-012"
+    }
+    product = lambda_handler(event, None)
+    print(product)
