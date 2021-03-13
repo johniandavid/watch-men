@@ -11,7 +11,7 @@ def send_twilio_message(phone_number, message):
 
     payload = {
         "To": f"+1{phone_number}",
-        "From": "+19166941400",
+        "From": f'{config["twilio"]["To"]}',
         "Body": message
     }
 
