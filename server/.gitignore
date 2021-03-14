@@ -10,7 +10,6 @@
 
 # production
 /build
-/Lambda_Functions/watchProducts/config.json
 
 # misc
 .DS_Store

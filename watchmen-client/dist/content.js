@@ -9,7 +9,7 @@ window.addEventListener("message", function(event) {
 });
 
 async function onDidReceiveMessage(event) {
-    if (event.Data.type && (event.Data.type === "GET_URL")) {
+    if (event.data.type && (event.data.type === "GET_URL")) {
 
         chrome.tabs.query({active: true, lastFocusedWindow: true}, tabs => {
             let url = tabs[0].url;
