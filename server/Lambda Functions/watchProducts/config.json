@@ -1,0 +1,7 @@
+{
+  "twilio" : {
+    "ACCOUNT_SID" : "AC0388e3d447bdbab94b06987abcece99c",
+    "AUTH_TOKEN" : "0bfc70e0343625d9a467424e5581b350",
+    "To" : "+19166941400"
+  }
+}
