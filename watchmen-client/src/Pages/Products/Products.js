@@ -1,23 +1,22 @@
+import NavBar from "../../Components/NavBar/NavBar";
+
+import {deleteProduct, getAllProducts} from "../../Data/productRequests"
+
 import { useEffect, useState } from 'react'
 import { Button, Container, Card, CardImg} from 'react-bootstrap'
-import {deleteProduct, getAllProducts} from "../../Data/productRequests"
 
 function Products(props) {
 
     const [products,setProducts] = useState([])
-
     async function fetchData() {
         const productList = []
-        const data = await getAllProducts(props.user_id);
+        const data = await getAllProducts(props.userid);
+        setProducts(Object.values(data))
 
-        for (const product_id in data){
-            productList.push(data[product_id])
-        }
-        setProducts(productList)
     }
 
     async function deleteData(product_id){
-        deleteProduct(props.user_id, product_id)
+        await deleteProduct(props.userid, product_id)
         fetchData()
     }
 
@@ -28,6 +27,8 @@ function Products(props) {
     useEffect(() => {
         fetchData()
     },[])
+
+    var product_ids = Object.keys(products)
 
     let productCards = products.map(product => {
        return (
@@ -44,10 +45,13 @@ function Products(props) {
     });
 
     return (
-        <Container>
-            <h4>Product</h4>
-            {productCards}
-        </Container>
+        <div>
+            <NavBar userid={props.userid} router={props.router} />
+            <Container>
+                <h4>Product</h4>
+                {productCards}
+            </Container>
+        </div>
     )
 }
 

@@ -1,13 +1,13 @@
-import { v4 as uuidv4 } from "uuid";
-import { Button } from 'react-bootstrap';
-
-import { useState } from 'react';
+import SignupForm from "../../Components/SignupForm/SignupForm";
+import Home from "../Home/Home";
 
 import {postUser} from "../../Data/userRequests";
 
-import SignupForm from "../../Components/SignupForm/SignupForm";
+import { useState } from 'react';
+import { v4 as uuidv4 } from "uuid";
+import { Button } from 'react-bootstrap';
 
-function Start(){
+function Start(props){
 
     const [name, setName] = useState("");
     const [phoneNumber, setPhoneNumber] = useState("");
@@ -27,19 +27,20 @@ function Start(){
 
     async function handleOnClicked() {
         let user_id = uuidv4();
-        window.localStorage.setItem("user_id",`${user_id}`)
+        window.localStorage.setItem("user_id", user_id)
+        window.localStorage.setItem("name", name)
         const user = {
           "user_id" : user_id,
           "name" : name,
           "phone_number" : phoneNumber
         }
         await postUser(user)
-        window.location.reload()
+        props.router(<Home userid={user_id} router={props.router}/>)
     }
 
     return (
         <div>
-            <h5>WELCOME!</h5>
+            <h5>Watchmen!</h5>
             <SignupForm formName={handleFormName} formPhoneNum={handleFormPhoneNumber}/>
             <Button size="sm" onClick={handleOnClicked} type="submit" >Start Now</Button>
         </div>
