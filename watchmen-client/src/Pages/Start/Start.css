@@ -1,0 +1,14 @@
+.text-bold {
+    font-weight: 700;
+}
+.page-title {
+    padding-top: 10px;
+}
+.signup {
+    padding: 10px 40px 10px 40px;
+}
+
+.start-spinner {
+    text-align: center;
+    padding: 33%;
+}

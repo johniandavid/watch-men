@@ -4,13 +4,14 @@ import User from "../../Pages/User/User";
 
 import { Nav, Navbar } from 'react-bootstrap';
 
+import "./NavBar.css"
 
 function NavBar(props) {
 
     return(
 
         <div>
-            <Navbar bg="dark" variant="dark">
+            <Navbar bg="dark " variant="dark">
                 <Navbar.Brand>Watchmen</Navbar.Brand>
                 <Nav className="mr-auto">
                      <Nav.Link onClick={() => {props.router(<Home userid={props.userid} router={props.router}/>)}}>Home</Nav.Link>

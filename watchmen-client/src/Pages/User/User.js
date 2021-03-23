@@ -7,6 +7,8 @@ import {deleteUser} from "../../Data/userRequests";
 import { useState } from 'react'
 import { Container, Button } from 'react-bootstrap'
 
+import "./User.css"
+
 
 function User(props) {
 
@@ -30,11 +32,13 @@ function User(props) {
     return (
         <div>
             <NavBar userid={props.userid} router={props.router} />
-            <Container>
-                <h5>User ID: {props.userid}</h5>
+            <div className="user">
+                <h6>User ID: {props.userid}</h6>
                  <DeleteUserModal showModal={show} handleCloseFunction={handleClose} handleShowFunction={handleShow} handleDeleteFunction={handleDelete}/>
+            </div>
+            <div className="delete-btn">
                 <Button onClick={handleShow}>Delete User</Button>
-            </Container>
+            </div>
         </div>
     );
 }

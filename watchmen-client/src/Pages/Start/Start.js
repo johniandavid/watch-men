@@ -2,15 +2,18 @@ import SignupForm from "../../Components/SignupForm/SignupForm";
 import Home from "../Home/Home";
 
 import {postUser} from "../../Data/userRequests";
-
+import { Spinner } from "react-bootstrap";
 import { useState } from 'react';
 import { v4 as uuidv4 } from "uuid";
-import { Button } from 'react-bootstrap';
+import { Button } from 'reactstrap';
+
+import "./Start.css"
 
 function Start(props){
 
     const [name, setName] = useState("");
     const [phoneNumber, setPhoneNumber] = useState("");
+    const [loading, setLoading] = useState(false);
 
     function handleFormName(e){
          setName(capitalize(e.target.value).trim())
@@ -34,15 +37,29 @@ function Start(props){
           "name" : name,
           "phone_number" : phoneNumber
         }
+        setLoading(true)
         await postUser(user)
+        setLoading(false)
         props.router(<Home userid={user_id} router={props.router}/>)
+    }
+
+    if(loading) {
+        return (
+                <div className="start-spinner">
+                      <Spinner animation="border" variant="info" />
+                </div>
+            )
     }
 
     return (
         <div>
-            <h5>Watchmen!</h5>
-            <SignupForm formName={handleFormName} formPhoneNum={handleFormPhoneNumber}/>
-            <Button size="sm" onClick={handleOnClicked} type="submit" >Start Now</Button>
+            <div className="page-title">
+                <h2 className="text-bold">Watchmen</h2>
+            </div>
+            <div className="signup">
+                <SignupForm formName={handleFormName} formPhoneNum={handleFormPhoneNumber}/>
+                <Button className="btn-round" color="info" size="sm" onClick={handleOnClicked} type="submit" >Start Now</Button>
+            </div>
         </div>
     )
 }

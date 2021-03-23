@@ -1,0 +1,17 @@
+.page-title {
+    padding-bottom: 20px;
+}
+
+.product-title {
+    margin: 14px 25px 0px 12px;
+}
+
+.product-price{
+    position: absolute;
+    left: 34%;
+    bottom: 0px;
+}
+
+.padding {
+    padding: 10px;
+}
