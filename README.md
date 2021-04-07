@@ -1,4 +1,4 @@
-Watch Men 
+#Watch Men 
 
 A Google Chrome extension shopping tool implementing a web scraper that tracks product information and notifies users
 by SMS when a product is on sale at a cheaper price
